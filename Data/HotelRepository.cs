@@ -12,7 +12,13 @@ public class HotelRepository : IHotelRepository
     public async Task<List<Hotel>> GetHotelsAsync()
     {
         return await _context.Hotels.ToListAsync();
-    } 
+    }
+
+    public async Task<List<Hotel>> GetHotelsAsync(string keywords)
+    {
+        return await _context.Hotels.Where(h => h.Name.Contains(keywords)).ToListAsync();
+
+    }
 
     public async Task<Hotel> GetHotelAsync(int hotelId)
     {

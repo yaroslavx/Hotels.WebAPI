@@ -3,6 +3,7 @@ namespace Hotels.WebAPI.Data;
 public interface IHotelRepository : IDisposable
 {
     Task<List<Hotel>> GetHotelsAsync();
+    Task<List<Hotel>> GetHotelsAsync(string keywords);
 
     Task<Hotel> GetHotelAsync(int hotelId);
 

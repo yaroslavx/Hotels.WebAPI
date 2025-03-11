@@ -20,6 +20,15 @@ public class HotelRepository : IHotelRepository
 
     }
 
+    public async Task<List<Hotel>> GetHotelsAsync(Coordinates coordinates)
+    {
+        return await _context.Hotels.Where(hotel =>
+            hotel.Latitude > coordinates.Latitude - 1 &&
+            hotel.Latitude < coordinates.Latitude + 1 &&
+            hotel.Longitude > coordinates.Longitude - 1 &&
+            hotel.Longitude < coordinates.Longitude + 1).ToListAsync();
+    }
+
     public async Task<Hotel> GetHotelAsync(int hotelId)
     {
         return await _context.Hotels.FirstOrDefaultAsync(h => h.Id == hotelId);

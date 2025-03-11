@@ -1,3 +1,4 @@
+using Hotels.WebAPI;
 using Hotels.WebAPI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,7 +25,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapGet("/hotels", async (IHotelRepository repository) => 
-    Results.Ok(await repository.GetHotelsAsync()))
+    Results.Extensions.Xml(await repository.GetHotelsAsync()))
     .Produces<List<Hotel>>(StatusCodes.Status200OK)
     .WithName("GetHotels")
     .WithTags("Getters");
@@ -75,6 +76,15 @@ app.MapGet("/hotels/search/name/{query}",
     .Produces(StatusCodes.Status404NotFound)
     .WithName("SearchHotels")
     .WithTags("Getters")
+    .ExcludeFromDescription();
+
+app.MapGet("/hotels/search/location/{coordinates}",
+    async (Coordinates coordinates, IHotelRepository repository) =>
+    {
+        return await repository.GetHotelsAsync(coordinates) is IEnumerable<Hotel> hotels
+            ? Results.Ok(hotels)
+            : Results.NotFound(Array.Empty<Hotel>());
+    })
     .ExcludeFromDescription();
 
 app.UseHttpsRedirection();

@@ -4,6 +4,7 @@ public interface IHotelRepository : IDisposable
 {
     Task<List<Hotel>> GetHotelsAsync();
     Task<List<Hotel>> GetHotelsAsync(string keywords);
+    Task<List<Hotel>> GetHotelsAsync(Coordinates coordinates);
 
     Task<Hotel> GetHotelAsync(int hotelId);
 

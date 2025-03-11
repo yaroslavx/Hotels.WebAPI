@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Hotels.WebAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b327fcad6d5d74f578c7b4a495985b3d663f2e8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8124ffe498ebb4c7a8898a971939e6147fe9ef93")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hotels.WebAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hotels.WebAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
